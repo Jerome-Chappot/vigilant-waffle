@@ -48,7 +48,7 @@ def avg_bytes_per_request(): # return the average size of the object returned to
         avg_bytes_per_request[per_request.key] = per_request.avg_bytes.value # fill the dictionary with each different URL associated with the average size of the object they return
     return avg_bytes_per_request
 
-def parameters():
+def parameters(): # return stats about parameter values
     parameters = defaultdict(dict)
     for hit in Search(index="my_index").fields("request").extra(size=10000).execute(): # starting the loop for indexing parameters in a multidimensional dictionary
         request = urllib.parse.unquote(hit.request[0])
